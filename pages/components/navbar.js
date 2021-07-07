@@ -6,10 +6,11 @@ import { useContext } from "react";
 
 function Navbar() {
   const userContext = useContext(UserContext);
-
+  const { userState, userDispatch } = userContext;
   async function signOut() {
     try {
       await Auth.signOut({ global: true });
+      userDispatch({ type: "USERLOGGEDOUT" });
     } catch (error) {
       console.log("error signing out: ", error);
     }
@@ -46,7 +47,15 @@ function Navbar() {
             <button className="button is-primary is-rounded">Ingresar</button>
           </Link>
         ) : (
-          <span>Bienvenido {userContext.userState.username}</span>
+          <div className="navbar-item">
+            <span>Bienvenido {userContext.userState.username}</span>
+            <button
+              onClick={() => signOut()}
+              className="button is-rounded is-danger"
+            >
+              Cerrar Sesión
+            </button>
+          </div>
         )}
       </div>
     </nav>
