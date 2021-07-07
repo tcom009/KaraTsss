@@ -1,5 +1,5 @@
 import { withSSRContext } from "aws-amplify";
-import { useRouter } from "next/dist/client/router";
+
 function Protected({ authenticated, username }) {
   if (!authenticated) {
     return <h1>Forbiden!, you must be authenticated to see this route </h1>;

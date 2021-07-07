@@ -3,37 +3,42 @@ import Link from "next/link";
 import { css } from "@emotion/css";
 import Amplify from "aws-amplify";
 import config from "../src/aws-exports";
+import Navbar from "./components/navbar";
+import { createContext, useReducer } from "react";
+
+export const UserContext = createContext();
 
 Amplify.configure({
   ...config,
   ssr: true,
 });
 
-export default function MyApp({ Component, pageProps }) {
-  return (
-    <div>
-      <nav className={navStyle}>
-        <Link href="/">
-          <span className={linkStyle}>Home</span>
-        </Link>
-        <Link href="/profile">
-          <span className={linkStyle}>Profile</span>
-        </Link>
-        <Link href="/protected">
-          <span className={linkStyle}>Protected route</span>
-        </Link>
-        <span>Connected to git!</span>
-      </nav>
-      <Component {...pageProps} />
-    </div>
-  );
+const userInitialState = {
+  username: null,
+  authenticated: false,
+};
+
+function UserReducer(state, action) {
+  switch (action.type) {
+    case "USERLOGGEDIN":
+      return { ...state, username: action.value, authenticated: true };
+    case "USERLOGGEDOUT":
+      return { ...state, username: null, authenticated: false };
+    default:
+      return state;
+  }
 }
 
-const linkStyle = css`
-  margin-right: 20px;
-  cursor: pointer;
-`;
-
-const navStyle = css`
-  display: flex;
-`;
+export default function MyApp({ Component, pageProps }) {
+  const [userState, userDispatch] = useReducer(UserReducer, userInitialState);
+  return (
+    <UserContext.Provider
+      value={{ userState: userState, userDispatch: userDispatch }}
+    >
+      <div>
+        <Navbar />;
+        <Component {...pageProps} />
+      </div>
+    </UserContext.Provider>
+  );
+}
