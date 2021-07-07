@@ -22,6 +22,7 @@ export default function MyApp({ Component, pageProps }) {
         <Link href="/protected">
           <span className={linkStyle}>Protected route</span>
         </Link>
+        <span>Connected to git!</span>
       </nav>
       <Component {...pageProps} />
     </div>

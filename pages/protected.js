@@ -10,7 +10,7 @@ function Protected({ authenticated, username }) {
 export async function getServerSideProps(context) {
   const { Auth } = withSSRContext(context);
   try {
-    const user = await Auth.currenAuthenticatedUser();
+    const user = await Auth.currentAuthenticatedUser();
     console.log("user: ", user);
     return {
       props: {
