@@ -7,6 +7,11 @@ import { Hub } from "aws-amplify";
 function Navbar() {
   const [username, setUsername] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
+  useEffect(() => {
+    Auth.currentAuthenticatedUser()
+      .then((user) => console.log(user))
+      .catch((err) => console.log(err));
+  }, []);
 
   useEffect(() => {
     Hub.listen("auth", (data) => {
