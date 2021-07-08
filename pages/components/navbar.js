@@ -1,15 +1,32 @@
 import Link from "next/link";
-//import { withSSRContext } from "aws-amplify";
+import { useState, useEffect } from "react";
 import { Auth } from "aws-amplify";
-import { UserContext } from "../_app";
-import { useContext } from "react";
+
+import { Hub } from "aws-amplify";
+
 function Navbar() {
-  const userContext = useContext(UserContext);
-  const { userState, userDispatch } = userContext;
+  const [username, setUsername] = useState(null);
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    Hub.listen("auth", (data) => {
+      const { payload } = data;
+      Auth.currentAuthenticatedUser(payload);
+      console.log(
+        "Message from Navbar, new event has happened",
+        data.payload.data.username + " has " + data.payload.event
+      );
+      setUsername(data.payload.data.username);
+      setAuthenticated(true);
+    });
+  });
+
   async function signOut() {
     try {
       await Auth.signOut({ global: true });
-      userDispatch({ type: "USERLOGGEDOUT" });
+      //userDispatch({ type: "USERLOGGEDOUT" });
+      setUsername(null);
+      setAuthenticated(false);
     } catch (error) {
       console.log("error signing out: ", error);
     }
@@ -41,13 +58,13 @@ function Navbar() {
         </div>
       </div>
       <div className="navbar-end">
-        {userContext.userState.authenticated === false ? (
+        {authenticated === false ? (
           <Link passHref={true} href="/profile">
             <button className="button is-primary is-rounded">Ingresar</button>
           </Link>
         ) : (
           <div className="navbar-item">
-            <span>Bienvenido {userState.username}</span>
+            <span>Bienvenido {username}</span>
             <button
               onClick={() => signOut()}
               className="button is-rounded is-danger"
