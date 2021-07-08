@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Auth } from "aws-amplify";
 import { UserContext } from "../_app";
 import { useContext } from "react";
-
 function Navbar() {
   const userContext = useContext(UserContext);
   const { userState, userDispatch } = userContext;
@@ -17,12 +16,12 @@ function Navbar() {
   }
   return (
     <nav
-      className="navbar is-dark"
+      className="navbar is-dark is-mobile"
       role="navigation"
       aria-label="main navigation"
     >
       <div className="navbar-brand navbar-item has-text-primary has-text-weight-bold">
-        <Link className="navbar-item" href="">
+        <Link className="navbar-item" href="/">
           <a className="navbar-item">KaraTSS</a>
         </Link>
       </div>
@@ -36,9 +35,9 @@ function Navbar() {
           <Link href="/profile">
             <a className="navbar-item">Profile</a>
           </Link>
-          <Link href="/protected">
-            <a className="navbar-item">Protected</a>
-          </Link>
+          {/* <Link href="/protectedUser">
+            <a className="navbar-item">Protected client route</a>
+          </Link> */}
         </div>
       </div>
       <div className="navbar-end">
@@ -48,7 +47,7 @@ function Navbar() {
           </Link>
         ) : (
           <div className="navbar-item">
-            <span>Bienvenido {userContext.userState.username}</span>
+            <span>Bienvenido {userState.username}</span>
             <button
               onClick={() => signOut()}
               className="button is-rounded is-danger"

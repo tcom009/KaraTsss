@@ -19,10 +19,7 @@ function Profile() {
       });
   }, [userDispatch]);
   return (
-    <div>
-      {user && <h1> Welcome, {userContext.userState.username}</h1>}
-      <AmplifySignOut />
-    </div>
+    <div>{user && <h1> Welcome, {userContext.userState.username}</h1>}</div>
   );
 }
 
