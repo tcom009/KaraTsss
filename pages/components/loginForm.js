@@ -10,7 +10,7 @@ function LoginForm() {
   const signIn = async () => {
     //setIsLoading(true);
     try {
-      const user = await Auth.signIn(username, password);
+      await Auth.signIn({ username, password });
       console.log(user);
       setIsLoading(false);
       router.push("/customers");
