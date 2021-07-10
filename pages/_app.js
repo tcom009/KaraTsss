@@ -4,6 +4,7 @@ import Amplify from "aws-amplify";
 import config from "../src/aws-exports";
 import Navbar from "./components/navbar";
 import { useReducer } from "react";
+
 Amplify.configure({
   ...config,
   ssr: true,

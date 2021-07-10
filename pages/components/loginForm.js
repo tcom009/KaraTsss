@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Auth } from "aws-amplify";
+import { useState, useEffect } from "react";
+import { Auth, Hub } from "aws-amplify";
 import { useRouter } from "next/router";
 
 function LoginForm() {
@@ -7,7 +7,11 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-
+  useEffect(() => {
+    return function cleanup() {
+      Hub.remove("auth");
+    };
+  }, []);
   const signIn = async () => {
     event.preventDefault();
     setIsLoading(true);
@@ -15,7 +19,7 @@ function LoginForm() {
       const user = await Auth.signIn({ username, password });
       console.log(user);
       setIsLoading(false);
-      router.push("/customers");
+      router.push("/");
       console.log("Success!");
     } catch (error) {
       setIsLoading(false);

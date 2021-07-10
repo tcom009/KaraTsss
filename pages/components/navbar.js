@@ -1,43 +1,50 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Auth, Hub } from "aws-amplify";
+import router, { useRouter } from "next/router";
 
 function Navbar() {
   const [username, setUsername] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
-  useEffect(() => {
-    Auth.currentAuthenticatedUser()
-      .then((user) => {
-        console.log("Form first useEffect", user);
-        setUsername(user.username);
-        setAuthenticated(true);
-      })
-      .catch((err) => {
-        console.log(err);
-        setUsername(null);
-        setAuthenticated(false);
-      });
-  }, []);
+  const route = useRouter();
+  // useEffect(() => {
+  //   Auth.currentAuthenticatedUser()
+  //     .then((user) => {
+  //       console.log("Form first useEffect", user);
+  //       setUsername(user.username);
+  //       setAuthenticated(true);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       setUsername(null);
+  //       setAuthenticated(false);
+  //     });
+  // }, []);
 
   useEffect(() => {
     Hub.listen("auth", (data) => {
       const { payload } = data;
       Auth.currentAuthenticatedUser(payload);
-      console.log(
-        "Message from Navbar, new event has happened",
-        data.payload.data.username + " has " + data.payload.event
-      );
-      setUsername(data.payload.data.username);
-      setAuthenticated(true);
+      if (data.payload.event === "signOut" || "signIn_failure") {
+        setAuthenticated(false);
+        router.push("/");
+      }
+      if (data.payload.event === "signIn") {
+        setUsername(data.payload.data.username);
+        setAuthenticated(true);
+      }
     });
-  });
+    return function cleanup() {
+      Hub.remove("auth");
+    };
+  }, []);
 
   async function signOut() {
     try {
       await Auth.signOut({ global: true });
-      //userDispatch({ type: "USERLOGGEDOUT" });
       setUsername(null);
       setAuthenticated(false);
+      route.push("/");
     } catch (error) {
       console.log("error signing out: ", error);
     }
