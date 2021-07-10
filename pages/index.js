@@ -6,6 +6,7 @@ import { Auth, Hub } from "aws-amplify";
 import LoginForm from "./components/loginForm";
 import Welcome from "./components/welcome";
 import { useRouter } from "next/router";
+
 function Index() {
   const [username, setUsername] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);

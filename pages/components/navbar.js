@@ -7,19 +7,6 @@ function Navbar() {
   const [username, setUsername] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
   const route = useRouter();
-  // useEffect(() => {
-  //   Auth.currentAuthenticatedUser()
-  //     .then((user) => {
-  //       console.log("Form first useEffect", user);
-  //       setUsername(user.username);
-  //       setAuthenticated(true);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       setUsername(null);
-  //       setAuthenticated(false);
-  //     });
-  // }, []);
 
   useEffect(() => {
     Hub.listen("auth", (data) => {

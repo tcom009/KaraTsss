@@ -5,7 +5,7 @@ import Table from "./components/table";
 function Customers() {
   const [user, setUser] = useState(null);
   const router = useRouter();
-  const tableParams = ["Nombre", "Apellido", "Email", "edad"];
+  //const tableParams = ["Nombre", "Apellido", "Email", "edad"];
   useEffect(() => {
     Auth.currentAuthenticatedUser()
       .then((user) => setUser(user))
