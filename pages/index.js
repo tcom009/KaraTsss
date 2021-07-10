@@ -1,17 +1,40 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import { Auth, I18n, Hub } from "aws-amplify";
+import { AmplifySignIn } from "@aws-amplify/ui-react";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
-export default function Home() {
+I18n.setLanguage("es");
+const dict = {
+  es: {
+    "Sign In": "Ingresar",
+  },
+};
+I18n.putVocabularies(dict);
+
+function Index() {
+  const router = useRouter();
+  useEffect(() => {
+    Auth.currentAuthenticatedUser()
+      .then((user) => {
+        setUser(user);
+      })
+      // if there is no authenticated user, redirect to profile page
+      .catch(() => router.push("/"));
+    //router.push("/customers");
+  }, []);
+
   return (
     <div className="container">
       <div className="columns">
-        <div className="column"></div>
-
-        <div className="column has-text-centered"></div>
-        <h1> Kara Tattoo Sales System</h1>
+        <div className="column has-text-centered">
+          <AmplifySignIn
+            headerText="Bienvenido, ingresa tus credenciales"
+            hideSignUp
+          />
+        </div>
       </div>
-      <div className="column"></div>
     </div>
   );
 }
+
+export default Index;

@@ -57,20 +57,26 @@ function Navbar() {
       <div className="navbar menu is-dark is-active">
         <div className="navbar-start">
           <Link href="/">
-            <a className="navbar-item">Home</a>
+            <a className="navbar-item">Inicio</a>
           </Link>
 
-          <Link href="/profile">
-            <a className="navbar-item">Profile</a>
+          <Link href="/customers">
+            <a className="navbar-item">Clientes</a>
           </Link>
-          {/* <Link href="/protectedUser">
-            <a className="navbar-item">Protected client route</a>
-          </Link> */}
+          <Link href="/sales">
+            <a className="navbar-item">Ventas</a>
+          </Link>
+          <Link href="/artists">
+            <a className="navbar-item">Artistas</a>
+          </Link>
+          <Link href="/services">
+            <a className="navbar-item">Servicios</a>
+          </Link>
         </div>
       </div>
       <div className="navbar-end">
         {authenticated === false ? (
-          <Link passHref={true} href="/login">
+          <Link passHref={true} href="/">
             <button className="button is-primary is-rounded">Ingresar</button>
           </Link>
         ) : (
