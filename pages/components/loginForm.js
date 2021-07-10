@@ -7,28 +7,30 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+
   const signIn = async () => {
-    //setIsLoading(true);
+    event.preventDefault();
+    setIsLoading(true);
     try {
-      await Auth.signIn({ username, password });
+      const user = await Auth.signIn({ username, password });
       console.log(user);
       setIsLoading(false);
       router.push("/customers");
       console.log("Success!");
     } catch (error) {
+      setIsLoading(false);
       console.log("error signing in", error);
-      //setIsLoading(false);
+      window.alert(error.message);
     }
   };
 
   return (
     <form className="box">
       <div className="field">
-        <label className="label">Username</label>
+        <label className="label">Usuario</label>
         <div className="control">
           <input
             className="input"
-            placeholder="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             type="text"
@@ -37,7 +39,7 @@ function LoginForm() {
       </div>
 
       <div className="field">
-        <label className="label">Password</label>
+        <label className="label">Contraseña</label>
         <div className="control">
           <input
             className="input"

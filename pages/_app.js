@@ -35,7 +35,7 @@ export default function MyApp({ Component, pageProps }) {
     //   value={{ userState: userState, userDispatch: userDispatch }}
     // >
     <div>
-      {/* <Navbar />; */}
+      <Navbar />;
       <Component {...pageProps} />
     </div>
     //</UserContext.Provider>
