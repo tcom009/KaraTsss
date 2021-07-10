@@ -1,16 +1,22 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Auth } from "aws-amplify";
-
-import { Hub } from "aws-amplify";
+import { Auth, Hub } from "aws-amplify";
 
 function Navbar() {
   const [username, setUsername] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
   useEffect(() => {
     Auth.currentAuthenticatedUser()
-      .then((user) => console.log(user))
-      .catch((err) => console.log(err));
+      .then((user) => {
+        console.log("Form first useEffect", user);
+        setUsername(user.username);
+        setAuthenticated(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        setUsername(null);
+        setAuthenticated(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -64,7 +70,7 @@ function Navbar() {
       </div>
       <div className="navbar-end">
         {authenticated === false ? (
-          <Link passHref={true} href="/profile">
+          <Link passHref={true} href="/login">
             <button className="button is-primary is-rounded">Ingresar</button>
           </Link>
         ) : (

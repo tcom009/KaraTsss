@@ -1,9 +1,36 @@
-import { useState, useEffect, useContext } from "react";
+import { AmplifySignIn } from "@aws-amplify/ui-react";
+import { I18n } from "aws-amplify";
+I18n.setLanguage("es");
+const dict = {
+  es: {
+    "Sign In": "Ingresar",
+  },
+};
+
+I18n.putVocabularies(dict);
+function Login() {
+  return (
+    <div className="container">
+      <div className="columns">
+        <div className="column has-text-centered">
+          <AmplifySignIn
+            headerText="Bienvenido, ingresa tus credenciales"
+            hideSignUp
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Login;
+
+/*import { useState, useEffect, useContext } from "react";
 import { Auth } from "aws-amplify";
 import { withAuthenticator } from "@aws-amplify/ui-react";
-import { UserContext } from "./_app.js";
+
 function Profile() {
-  const userContext = useContext(UserContext);
+
   const { userDispatch } = userContext;
   const [user, setUser] = useState(null);
   useEffect(() => {
@@ -24,3 +51,4 @@ function Profile() {
 }
 
 export default withAuthenticator(Profile);
+*/

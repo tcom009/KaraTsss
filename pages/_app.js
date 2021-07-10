@@ -6,8 +6,8 @@ import config from "../src/aws-exports";
 import Navbar from "./components/navbar";
 import { createContext, useReducer } from "react";
 
-export const UserContext = createContext();
-
+//const store = createStore(rootReducer);
+const UserContext = createContext();
 Amplify.configure({
   ...config,
   ssr: true,
