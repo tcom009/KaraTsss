@@ -11,7 +11,7 @@ function LoginForm() {
     return function cleanup() {
       Hub.remove("auth");
     };
-  }, []);
+  });
   const signIn = async () => {
     event.preventDefault();
     setIsLoading(true);

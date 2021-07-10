@@ -24,7 +24,7 @@ function Navbar() {
     return function cleanup() {
       Hub.remove("auth");
     };
-  }, []);
+  });
 
   async function signOut() {
     try {

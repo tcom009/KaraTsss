@@ -11,7 +11,7 @@ function Customers() {
       .then((user) => setUser(user))
       // if there is no authenticated user, redirect to profile page
       .catch(() => router.push("/"));
-  }, []);
+  });
 
   if (!user) return null;
 

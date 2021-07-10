@@ -30,7 +30,7 @@ function Index() {
     return function cleanup() {
       Hub.remove("auth");
     };
-  }, []);
+  });
 
   return (
     <div className="container">
