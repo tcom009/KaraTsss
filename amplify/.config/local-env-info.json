@@ -1,4 +1,5 @@
 {
   "projectPath": "/home/gersonmayer/next-authentication",
-  "envName": "dev"
+  "envName": "dev",
+  "defaultEditor": "vscode"
 }
