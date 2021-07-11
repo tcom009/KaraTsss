@@ -1,45 +1,29 @@
 {
   "providers": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-karatss-dev-223334-authRole",
-      "UnauthRoleArn": "arn:aws:iam::722832913931:role/amplify-karatss-dev-223334-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::722832913931:role/amplify-karatss-dev-223334-authRole",
+      "AuthRoleName": "amplify-karatss-dev-225215-authRole",
+      "UnauthRoleArn": "arn:aws:iam::722832913931:role/amplify-karatss-dev-225215-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::722832913931:role/amplify-karatss-dev-225215-authRole",
       "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-karatss-dev-223334-deployment",
-      "UnauthRoleName": "amplify-karatss-dev-223334-unauthRole",
-      "StackName": "amplify-karatss-dev-223334",
-      "StackId": "arn:aws:cloudformation:us-east-2:722832913931:stack/amplify-karatss-dev-223334/c6e00040-e1f8-11eb-8be7-0ac1f4eaf59c",
-      "AmplifyAppId": "dtepmpimqdxom"
-    }
-  },
-  "auth": {
-    "karatssaf767019": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "customAuth": false,
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-karatss-dev-223334-deployment/amplify-cfn-templates/auth/karatssaf767019-cloudformation-template.yml",
-        "logicalId": "authkaratssaf767019"
-      },
-      "lastPushTimeStamp": "2021-07-11T03:39:22.671Z",
-      "output": {
-        "UserPoolId": "us-east-2_MipklPxs0",
-        "AppClientIDWeb": "45r40n6qpl0ss3gq4pijml8c23",
-        "AppClientID": "2ovks7u28dsav71s0kqvq9i6so",
-        "IdentityPoolId": "us-east-2:6d74ca5c-2638-4240-80fa-4b2a1c3a1c59",
-        "UserPoolArn": "arn:aws:cognito-idp:us-east-2:722832913931:userpool/us-east-2_MipklPxs0",
-        "IdentityPoolName": "karatssaf767019_identitypool_af767019__dev",
-        "UserPoolName": "karatssaf767019_userpool_af767019"
-      },
-      "lastPushDirHash": "1ydMPrAc36qcWsw7Vg2dTosTNCk="
+      "DeploymentBucketName": "amplify-karatss-dev-225215-deployment",
+      "UnauthRoleName": "amplify-karatss-dev-225215-unauthRole",
+      "StackName": "amplify-karatss-dev-225215",
+      "StackId": "arn:aws:cloudformation:us-east-2:722832913931:stack/amplify-karatss-dev-225215/6326f330-e1fb-11eb-8ade-0ac33d1bf8fc",
+      "AmplifyAppId": "d242895ylk9qj0"
     }
   },
   "hosting": {
     "amplifyhosting": {
       "service": "amplifyhosting",
-      "type": "cicd",
-      "lastPushTimeStamp": "2021-07-11T03:40:55.332Z"
+      "providerPlugin": "awscloudformation",
+      "type": "manual",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-karatss-dev-225215-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
+        "logicalId": "hostingamplifyhosting"
+      },
+      "lastPushTimeStamp": "2021-07-11T03:57:20.229Z",
+      "output": {},
+      "lastPushDirHash": "/+VZ33seFFqAr6wbtptwbINUfSA="
     }
   }
 }

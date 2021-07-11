@@ -1,17 +1,9 @@
 {
-  "auth": {
-    "karatssaf767019": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "customAuth": false
-    }
-  },
   "hosting": {
     "amplifyhosting": {
       "service": "amplifyhosting",
-      "type": "cicd",
-      "lastPushTimeStamp": "2021-07-11T03:40:55.332Z"
+      "providerPlugin": "awscloudformation",
+      "type": "manual"
     }
   }
 }
