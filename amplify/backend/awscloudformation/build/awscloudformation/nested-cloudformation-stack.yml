@@ -80,7 +80,7 @@
     "authnextauthentication39cbbc3b": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-nextauthentication-dev-230205-deployment/amplify-cfn-templates/auth/nextauthentication39cbbc3b-cloudformation-template.yml",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-nextauthentication-karatssdev-214330-deployment/amplify-cfn-templates/auth/nextauthentication39cbbc3b-cloudformation-template.yml",
         "Parameters": {
           "identityPoolName": "nextauthentication39cbbc3b_identitypool_39cbbc3b",
           "allowUnauthenticatedIdentities": false,
@@ -123,7 +123,52 @@
           "serviceName": "Cognito",
           "usernameCaseSensitive": false,
           "dependsOn": "",
-          "env": "dev"
+          "env": "karatssdev"
+        }
+      }
+    },
+    "authuserPoolGroups": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-nextauthentication-karatssdev-214330-deployment/amplify-cfn-templates/auth/template.json",
+        "Parameters": {
+          "AuthRoleArn": {
+            "Fn::GetAtt": [
+              "AuthRole",
+              "Arn"
+            ]
+          },
+          "UnauthRoleArn": {
+            "Fn::GetAtt": [
+              "UnauthRole",
+              "Arn"
+            ]
+          },
+          "authnextauthentication39cbbc3bUserPoolId": {
+            "Fn::GetAtt": [
+              "authnextauthentication39cbbc3b",
+              "Outputs.UserPoolId"
+            ]
+          },
+          "authnextauthentication39cbbc3bAppClientIDWeb": {
+            "Fn::GetAtt": [
+              "authnextauthentication39cbbc3b",
+              "Outputs.AppClientIDWeb"
+            ]
+          },
+          "authnextauthentication39cbbc3bAppClientID": {
+            "Fn::GetAtt": [
+              "authnextauthentication39cbbc3b",
+              "Outputs.AppClientID"
+            ]
+          },
+          "authnextauthentication39cbbc3bIdentityPoolId": {
+            "Fn::GetAtt": [
+              "authnextauthentication39cbbc3b",
+              "Outputs.IdentityPoolId"
+            ]
+          },
+          "env": "karatssdev"
         }
       }
     },

@@ -3,5 +3,10 @@
     "configLevel": "project",
     "useProfile": true,
     "profileName": "default"
+  },
+  "karatssdev": {
+    "configLevel": "project",
+    "useProfile": true,
+    "profileName": "default"
   }
 }

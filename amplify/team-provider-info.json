@@ -16,5 +16,24 @@
         "nextauthentication39cbbc3b": {}
       }
     }
+  },
+  "karatssdev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-nextauthentication-karatssdev-214330-authRole",
+      "UnauthRoleArn": "arn:aws:iam::722832913931:role/amplify-nextauthentication-karatssdev-214330-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::722832913931:role/amplify-nextauthentication-karatssdev-214330-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-nextauthentication-karatssdev-214330-deployment",
+      "UnauthRoleName": "amplify-nextauthentication-karatssdev-214330-unauthRole",
+      "StackName": "amplify-nextauthentication-karatssdev-214330",
+      "StackId": "arn:aws:cloudformation:us-east-2:722832913931:stack/amplify-nextauthentication-karatssdev-214330/c7f82b30-e1f1-11eb-aed0-02618130dd70",
+      "AmplifyAppId": "d3ufpxlp6wzyyi"
+    },
+    "categories": {
+      "auth": {
+        "nextauthentication39cbbc3b": {},
+        "userPoolGroups": {}
+      }
+    }
   }
 }

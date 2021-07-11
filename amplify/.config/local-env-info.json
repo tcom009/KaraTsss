@@ -1,4 +1,5 @@
 {
-  "projectPath": "/home/gersonmayer/next-auth/next-authentication",
-  "envName": "dev"
+  "projectPath": "/home/gersonmayer/next-authentication",
+  "defaultEditor": "vscode",
+  "envName": "karatssdev"
 }

@@ -55,9 +55,12 @@ function LoginForm() {
         </div>
       </div>
       {isLoading == true ? (
-        <button className="button is-primary is-loading is-large" />
+        <button className="button is-primary is-loading is-fullwidth" />
       ) : (
-        <button className="button is-primary is-large" onClick={() => signIn()}>
+        <button
+          className="button is-primary is-fullwidth"
+          onClick={() => signIn()}
+        >
           Sign in
         </button>
       )}

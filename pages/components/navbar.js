@@ -6,8 +6,8 @@ import router, { useRouter } from "next/router";
 function Navbar() {
   const [username, setUsername] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
+  const [isActive, setIsActive] = useState(false);
   const route = useRouter();
-
   useEffect(() => {
     Hub.listen("auth", (data) => {
       const { payload } = data;
@@ -38,7 +38,7 @@ function Navbar() {
   }
   return (
     <nav
-      className="navbar is-dark is-mobile"
+      className="navbar is-dark"
       role="navigation"
       aria-label="main navigation"
     >
@@ -46,9 +46,24 @@ function Navbar() {
         <Link className="navbar-item" href="/">
           <a className="navbar-item">KaraTSS</a>
         </Link>
+        <a
+          role="button"
+          className={`navbar-burger ${isActive ? "is-active" : ""}`}
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbar"
+          onClick={() => setIsActive(!isActive)}
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
 
-      <div className="navbar menu is-dark is-active">
+      <div
+        id="navbar"
+        className={`navbar-menu is-dark ${isActive == true ? "is-active" : ""}`}
+      >
         <div className="navbar-start">
           <Link href="/">
             <a className="navbar-item">Inicio</a>
@@ -67,23 +82,25 @@ function Navbar() {
             <a className="navbar-item">Servicios</a>
           </Link>
         </div>
-      </div>
-      <div className="navbar-end">
-        {authenticated === false ? (
-          <Link passHref={true} href="/">
-            <button className="button is-primary is-rounded">Ingresar</button>
-          </Link>
-        ) : (
-          <div className="navbar-item">
-            <span>Bienvenido {username}</span>
-            <button
-              onClick={() => signOut()}
-              className="button is-rounded is-danger"
-            >
-              Cerrar Sesión
-            </button>
-          </div>
-        )}
+        <div className="navbar-end">
+          {authenticated === false ? (
+            <Link passHref={true} href="/">
+              <button className="button is-primary is-rounded mt-2 mr-2">
+                Ingresar
+              </button>
+            </Link>
+          ) : (
+            <div className="navbar-item">
+              <span className="mr-2">Bienvenido {username}</span>
+              <button
+                onClick={() => signOut()}
+                className="button is-rounded is-danger mr-2 mt-2"
+              >
+                Cerrar Sesión
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );
