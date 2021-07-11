@@ -77,15 +77,15 @@
         }
       }
     },
-    "authnextauthentication39cbbc3b": {
+    "authkaratssaf767019": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-nextauthentication-karatssdev-214330-deployment/amplify-cfn-templates/auth/nextauthentication39cbbc3b-cloudformation-template.yml",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-karatss-dev-223334-deployment/amplify-cfn-templates/auth/karatssaf767019-cloudformation-template.yml",
         "Parameters": {
-          "identityPoolName": "nextauthentication39cbbc3b_identitypool_39cbbc3b",
+          "identityPoolName": "karatssaf767019_identitypool_af767019",
           "allowUnauthenticatedIdentities": false,
-          "resourceNameTruncated": "nextau39cbbc3b",
-          "userPoolName": "nextauthentication39cbbc3b_userpool_39cbbc3b",
+          "resourceNameTruncated": "karatsaf767019",
+          "userPoolName": "karatssaf767019_userpool_af767019",
           "autoVerifiedAttributes": "email",
           "mfaConfiguration": "OFF",
           "mfaTypes": "SMS Text Message",
@@ -101,10 +101,10 @@
           "userpoolClientRefreshTokenValidity": 30,
           "userpoolClientWriteAttributes": "email",
           "userpoolClientReadAttributes": "email",
-          "userpoolClientLambdaRole": "nextau39cbbc3b_userpoolclient_lambda_role",
+          "userpoolClientLambdaRole": "karatsaf767019_userpoolclient_lambda_role",
           "userpoolClientSetAttributes": false,
-          "sharedId": "39cbbc3b",
-          "resourceName": "nextauthentication39cbbc3b",
+          "sharedId": "af767019",
+          "resourceName": "karatssaf767019",
           "authSelections": "identityPoolAndUserPool",
           "authRoleArn": {
             "Fn::GetAtt": [
@@ -123,52 +123,7 @@
           "serviceName": "Cognito",
           "usernameCaseSensitive": false,
           "dependsOn": "",
-          "env": "karatssdev"
-        }
-      }
-    },
-    "authuserPoolGroups": {
-      "Type": "AWS::CloudFormation::Stack",
-      "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-nextauthentication-karatssdev-214330-deployment/amplify-cfn-templates/auth/template.json",
-        "Parameters": {
-          "AuthRoleArn": {
-            "Fn::GetAtt": [
-              "AuthRole",
-              "Arn"
-            ]
-          },
-          "UnauthRoleArn": {
-            "Fn::GetAtt": [
-              "UnauthRole",
-              "Arn"
-            ]
-          },
-          "authnextauthentication39cbbc3bUserPoolId": {
-            "Fn::GetAtt": [
-              "authnextauthentication39cbbc3b",
-              "Outputs.UserPoolId"
-            ]
-          },
-          "authnextauthentication39cbbc3bAppClientIDWeb": {
-            "Fn::GetAtt": [
-              "authnextauthentication39cbbc3b",
-              "Outputs.AppClientIDWeb"
-            ]
-          },
-          "authnextauthentication39cbbc3bAppClientID": {
-            "Fn::GetAtt": [
-              "authnextauthentication39cbbc3b",
-              "Outputs.AppClientID"
-            ]
-          },
-          "authnextauthentication39cbbc3bIdentityPoolId": {
-            "Fn::GetAtt": [
-              "authnextauthentication39cbbc3b",
-              "Outputs.IdentityPoolId"
-            ]
-          },
-          "env": "karatssdev"
+          "env": "dev"
         }
       }
     },
@@ -176,7 +131,7 @@
       "DependsOn": [
         "AuthRole",
         "UnauthRole",
-        "authnextauthentication39cbbc3b"
+        "authkaratssaf767019"
       ],
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -259,7 +214,7 @@
         },
         "idpId": {
           "Fn::GetAtt": [
-            "authnextauthentication39cbbc3b",
+            "authkaratssaf767019",
             "Outputs.IdentityPoolId"
           ]
         },

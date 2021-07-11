@@ -1,63 +1,45 @@
 {
   "providers": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-nextauthentication-karatssdev-214330-authRole",
-      "UnauthRoleArn": "arn:aws:iam::722832913931:role/amplify-nextauthentication-karatssdev-214330-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::722832913931:role/amplify-nextauthentication-karatssdev-214330-authRole",
+      "AuthRoleName": "amplify-karatss-dev-223334-authRole",
+      "UnauthRoleArn": "arn:aws:iam::722832913931:role/amplify-karatss-dev-223334-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::722832913931:role/amplify-karatss-dev-223334-authRole",
       "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-nextauthentication-karatssdev-214330-deployment",
-      "UnauthRoleName": "amplify-nextauthentication-karatssdev-214330-unauthRole",
-      "StackName": "amplify-nextauthentication-karatssdev-214330",
-      "StackId": "arn:aws:cloudformation:us-east-2:722832913931:stack/amplify-nextauthentication-karatssdev-214330/c7f82b30-e1f1-11eb-aed0-02618130dd70",
-      "AmplifyAppId": "d3ufpxlp6wzyyi"
+      "DeploymentBucketName": "amplify-karatss-dev-223334-deployment",
+      "UnauthRoleName": "amplify-karatss-dev-223334-unauthRole",
+      "StackName": "amplify-karatss-dev-223334",
+      "StackId": "arn:aws:cloudformation:us-east-2:722832913931:stack/amplify-karatss-dev-223334/c6e00040-e1f8-11eb-8be7-0ac1f4eaf59c",
+      "AmplifyAppId": "dtepmpimqdxom"
     }
   },
   "auth": {
-    "nextauthentication39cbbc3b": {
+    "karatssaf767019": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false,
-      "lastPushTimeStamp": "2021-07-11T02:48:19.521Z",
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-nextauthentication-karatssdev-214330-deployment/amplify-cfn-templates/auth/nextauthentication39cbbc3b-cloudformation-template.yml",
-        "logicalId": "authnextauthentication39cbbc3b"
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-karatss-dev-223334-deployment/amplify-cfn-templates/auth/karatssaf767019-cloudformation-template.yml",
+        "logicalId": "authkaratssaf767019"
       },
+      "lastPushTimeStamp": "2021-07-11T03:39:22.671Z",
       "output": {
-        "UserPoolId": "us-east-2_b7bAyg2bt",
-        "AppClientIDWeb": "1naffsrj9pkmru1n17j0u6dp6d",
-        "AppClientID": "5h266ltf1uns6tovah8r80d89q",
-        "IdentityPoolId": "us-east-2:8ec3dec6-f204-4475-9b5c-94e68dd34989",
-        "UserPoolArn": "arn:aws:cognito-idp:us-east-2:722832913931:userpool/us-east-2_b7bAyg2bt",
-        "IdentityPoolName": "nextauthentication39cbbc3b_identitypool_39cbbc3b__karatssdev",
-        "UserPoolName": "nextauthentication39cbbc3b_userpool_39cbbc3b"
+        "UserPoolId": "us-east-2_MipklPxs0",
+        "AppClientIDWeb": "45r40n6qpl0ss3gq4pijml8c23",
+        "AppClientID": "2ovks7u28dsav71s0kqvq9i6so",
+        "IdentityPoolId": "us-east-2:6d74ca5c-2638-4240-80fa-4b2a1c3a1c59",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-2:722832913931:userpool/us-east-2_MipklPxs0",
+        "IdentityPoolName": "karatssaf767019_identitypool_af767019__dev",
+        "UserPoolName": "karatssaf767019_userpool_af767019"
       },
-      "lastPushDirHash": "WUFOCFB7qnBd8QV3mogI8jHAbVs="
-    },
-    "userPoolGroups": {
-      "service": "Cognito-UserPool-Groups",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "nextauthentication39cbbc3b",
-          "attributes": [
-            "UserPoolId",
-            "AppClientIDWeb",
-            "AppClientID",
-            "IdentityPoolId"
-          ]
-        }
-      ],
-      "lastPushTimeStamp": "2021-07-11T02:48:19.521Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-nextauthentication-karatssdev-214330-deployment/amplify-cfn-templates/auth/template.json",
-        "logicalId": "authuserPoolGroups"
-      },
-      "output": {
-        "karatssGroupRole": "arn:aws:iam::722832913931:role/us-east-2_b7bAyg2bt-karatssGroupRole"
-      },
-      "lastPushDirHash": "G7JjnixoM5BO2qkyIdQCtW+TY+w="
+      "lastPushDirHash": "1ydMPrAc36qcWsw7Vg2dTosTNCk="
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "type": "cicd",
+      "lastPushTimeStamp": "2021-07-11T03:40:55.332Z"
     }
   }
 }
